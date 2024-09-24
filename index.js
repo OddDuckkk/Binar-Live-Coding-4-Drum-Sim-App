@@ -1,10 +1,23 @@
 let totalButton = document.querySelectorAll("button").length;
 
+function popIn(button) {
+    button.style.transitionDuration = '0.2s';
+    button.style.transform = `scale(1.5)`;
+    button.style.color = 'chartreuse';
+   
+    setTimeout(() => {
+        button.style.transitionDuration = '0.07s';
+        button.style.transform = `scale(1)`;
+        button.style.color = '#DA0463';
+    }, 200);
+}
 /* Button click event listener */
 for(let i = 0; i < totalButton ; i++)
 {
     document.querySelectorAll("button")[i].addEventListener("click", function (){
         // alert("Hello fsw 2 dari button index " + i);
+        popIn(this);
+        
         switch(this.innerHTML){
         
         case "w": {
@@ -49,6 +62,11 @@ for(let i = 0; i < totalButton ; i++)
 
 /* Key down event listener */
 document.addEventListener("keydown", function (event){
+    const button = document.getElementById(`${event.key}`)
+    if (button) {
+        popIn(button);
+    }
+    
     switch(event.key){
     
     case "w": {
